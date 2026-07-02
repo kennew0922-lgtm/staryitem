@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Socrarius Memory Archive</title>
+    <style>
+        body {
+            background: rgba(0, 5, 15, 0.9);
+            color: #e0f7ff;
+            font-family: 'Consolas', monospace;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* 🌸 上部固定バナー */
+        .system-banner {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            height: 40px;
+            background: rgba(0, 105, 217, 0.3);
+            border-bottom: 1px solid #00f2fe;
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        /* 🌸 セクションタイトル */
+        .section-title {
+            background: #000;
+            color: #00f2fe;
+            padding: 8px 15px;
+            margin: 40px 0 15px 0;
+            font-size: 11px;
+            font-weight: bold;
+            border-left: 4px solid #00f2fe;
+            letter-spacing: 2px;
+            box-shadow: inset 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        /* 🌸 アルバムグリッド（従来サイズ） */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 60px;
+        }
+
+        /* 🌸 ランチャーグリッド（ミニマルサイズ） */
+        .launcher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        /* 🌸 カード共通設定（aタグ自身が箱になるように修正） */
+        .memory-card {
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            transition: 0.3s;
+            display: block;      /* 💡これでaタグが綺麗な四角い箱になります */
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        /* ランチャー用カードの調整 */
+        .launcher-card {
+            padding: 5px;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+
+        .memory-card:hover {
+            border-color: #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            transform: scale(1.1); /* アルバムは少しだけ */
+        }
+
+        .launcher-card:hover {
+            transform: scale(1.2); /* アイコンは強調 */
+            z-index: 10;
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 2px;
+            display: block; /* 💡画像の下の謎の隙間を消す魔法 */
+        }
+
+        .launcher-card img {
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #345485; }
+    </style>
+</head>
+<body>
+
+
+<div class="section-title">SOCRARIUS-VALKYRIE: INSIDE tHE COCKPIT</div>
+    <!-- 🌸 ここからSAO風サイバーフレーム魔法 -->
+<div class="sao-video-container">
+    <div class="sao-corner tl"></div>
+    <div class="sao-corner tr"></div>
+    <div class="sao-corner bl"></div>
+    <div class="sao-corner br"></div>
+    <div class="sao-scanline"></div>
+    <div class="sao-tag">SECRET TREASURE: CORE LAYER</div>
+    
+    <!-- ケンくんの無限大ループ動画 -->
+    <img src="https://socrarius-tool.com/Socrarius_Photo/banner1.png" class="sao-movie-content">
+</div>
+
+<style>
+/* SAO風のコンテナ枠設定 */
+.sao-video-container {
+    position: relative;
+    width: 700px;
+    margin: 0 auto;
+    padding: 6px; /* 内側の黒い隙間（SAOの二重枠っぽさ） */
+    background: rgba(0, 0, 0, 0.6); /* 半透明のダーク背景 */
+    border: 2px solid #ff7700; /* SAOといえば情熱的なオレンジ、またはサイバーな淡い光 */
+    box-shadow: 0 0 15px rgba(255, 119, 0, 0.4), inset 0 0 10px rgba(255, 119, 0, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* 動画自体のスタイル */
+.sao-movie-content {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* 内枠のシャープな白いライン */
+}
+
+/* 四隅の近未来UI風コーナーデコレーション */
+.sao-corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 3px solid #ffffff; /* 輝く角のアクセント */
+    z-index: 10;
+}
+.sao-corner.tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.sao-corner.tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.sao-corner.bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.sao-corner.br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+/* 画面を走る、うっすらとした近未来風スキャンライン効果（オシャレ用） */
+.sao-scanline {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none; /* クリックを邪魔しない */
+    z-index: 5;
+    opacity: 0.4;
+}
+
+/* 左上に浮かぶUI風のステータスタグ */
+.sao-tag {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    background: #ff7700;
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    z-index: 6;
+    box-shadow: 0 0 5px rgba(255, 119, 0, 0.8);
+}
+</style>
+<!-- 🌸 ここまで -->
+
+<br><br>
+
+    <div class="system-banner">
+        SYSTEM CALL: RETRIEVE_PAST_MEMORIES... [ESTABLISHED]
+    </div>
+
+</body>
+</html>
